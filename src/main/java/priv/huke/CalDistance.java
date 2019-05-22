@@ -21,9 +21,9 @@ public class CalDistance {
     }
 
     public String distance() {
-        if (routeStr==null && routeStr.isEmpty()) {
-            return "NO SUCH ROUTE";
-        }
+//        if (routeStr==null && routeStr.isEmpty()) {
+//            return "NO SUCH ROUTE";
+//        }
         boolean flag;
         int distance = 0;
         String[] split = routeStr.split("-");

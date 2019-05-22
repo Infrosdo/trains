@@ -21,6 +21,11 @@ public class Town {
     }
 
     @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (!Town.class.isInstance(obj)){
             return false;
