@@ -36,4 +36,10 @@ public class Town {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return "Town{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

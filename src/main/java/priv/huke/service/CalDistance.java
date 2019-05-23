@@ -1,4 +1,4 @@
-package priv.huke;
+package priv.huke.service;
 
 import priv.huke.entity.Edge;
 import priv.huke.entity.Graph;

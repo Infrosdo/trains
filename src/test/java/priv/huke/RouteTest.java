@@ -2,16 +2,13 @@ package priv.huke;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import priv.huke.entity.Edge;
-import priv.huke.entity.Graph;
-import priv.huke.entity.Route;
-import priv.huke.entity.Town;
-import priv.huke.service.RouteService;
+import priv.huke.entity.*;
+import priv.huke.service.CalDistance;
+import priv.huke.service.CalTripsNum;
+import priv.huke.service.TreeFactory;
 import priv.huke.util.XmlReader;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
 
 public class RouteTest {
 
@@ -35,16 +32,48 @@ public class RouteTest {
 
     @Test
     public void testCase2() {
-        RouteService service = new RouteService(graph);
-        Map<Town, Set<Edge>> reachableTown = service.getReachableTown();
-        System.out.println(reachableTown);
+        TreeFactory factory = new TreeFactory(graph);
+        TownTreeNode tree = factory.getDistanceTree(new Town("B"));
+        System.out.println(tree);
     }
 
     @Test
-    public void testCase3() {
-        RouteService service = new RouteService(graph);
-        Set<Route> allRoute = service.getAllRoute(new Town("A"), new Town("B"));
-        System.out.println(allRoute);
+    public void testCase6() {
+        TreeFactory factory = new TreeFactory(graph);
+        CalTripsNum calTripsNum = new CalTripsNum(new Town("C"),new Town("C"),factory);
+        int tripsNum = calTripsNum.tripsNum(3);
+        System.out.println(tripsNum);
+    }
 
+    @Test
+    public void testCase7() {
+        TreeFactory factory = new TreeFactory(graph);
+        CalTripsNum calTripsNum = new CalTripsNum(new Town("A"),new Town("C"),factory);
+        int tripsNum = calTripsNum.equalsTripsNum(4);
+        System.out.println(tripsNum);
+    }
+
+    @Test
+    public void testCase8() {
+        TreeFactory factory = new TreeFactory(graph);
+        CalTripsNum calTripsNum = new CalTripsNum(new Town("A"),new Town("C"),factory);
+        int length = calTripsNum.length();
+        System.out.println(length);
+    }
+
+    @Test
+    public void testCase9() {
+        TreeFactory factory = new TreeFactory(graph);
+        CalTripsNum calTripsNum = new CalTripsNum(new Town("B"),new Town("B"),factory);
+        int length = calTripsNum.length();
+        System.out.println(length);
+    }
+
+    @Test
+    public void testCase10() {
+        TreeFactory factory = new TreeFactory(graph);
+        CalTripsNum calTripsNum = new CalTripsNum(new Town("C"),new Town("C"),factory);
+        int lenthNum = calTripsNum.lenthNum(30);
+        System.out.println(lenthNum);
     }
 }
